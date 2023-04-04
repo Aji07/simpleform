@@ -34,7 +34,9 @@
   <!-- err msg for Gender -->
   <small class="text-danger" *ngIf="!sfc.userGender.touched && !sfc.userGender.valid ">* Required</small>
 <br >
-  <button class="btn btn-primary mt-3 p-2" (click)="onsubmit()">Submit</button>
+  <button class="btn btn-primary mt-3 p-2" (click)="onsubmit()"
+          [disabled]="!sfc.userName.valid && !sfc.userEmail.valid && !sfc.userDob.valid && !sfc.userGender.valid"
+          >Submit</button>
 
 </form>
 </div>
