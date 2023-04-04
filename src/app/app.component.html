@@ -8,13 +8,13 @@
   >
   </div>
   <!-- err messg for username -->
-  <small class="text-danger" *ngIf="!sfc.userName.touched">*Name Required</small>
+  <small class="text-danger" *ngIf="!sfc.userName.touched && !sfc.userName.valid">*Name Required</small>
 <!-- Email -->
   <div class="form-group mt-2 p-2">
     <input class="form-control" type="email" name="usereMail" formControlName="userEmail" placeholder="Enter Email" >
   </div>
 <!-- err msg Useremail -->
-<small class="text-danger" *ngIf="!sfc.userEmail.valid">*Enter Valid Email</small>
+<small class="text-danger" *ngIf="!sfc.userDob.touched && !sfc.userEmail.valid">*Enter Valid Email</small>
 <!-- DOB -->
   <div class="form-group mt-2 p-2">
     <input class="form-control" type="date" name="userDob" formControlName="userDob" >
@@ -32,7 +32,7 @@
     <label class="custom-control-label" for="female">Female</label>
   </div>
   <!-- err msg for Gender -->
-  <small class="text-danger" *ngIf="!sfc.userGender.touched ">* Required</small>
+  <small class="text-danger" *ngIf="!sfc.userGender.touched && !sfc.userGender.valid ">* Required</small>
 <br >
   <button class="btn btn-primary mt-3 p-2" (click)="onsubmit()">Submit</button>
 
@@ -51,6 +51,7 @@
   </thead>
   <tbody>
     <tr class="text-blue" *ngFor="let fd of formData;" >
+      <!-- <th scope="col">{{i + 1}}</th> -->
       <td scope="row">{{fd.id}}</td>
       <td scope="row">{{fd.userName}}</td>
       <td scope="row">{{fd.userEmail}}</td>
