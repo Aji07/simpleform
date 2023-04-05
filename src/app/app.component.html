@@ -1,44 +1,72 @@
 <h1>Simple Form</h1>
 <div class="container">
-<form [formGroup]="simpleForm " >
-  <!-- UserName -->
-  <div class="form-group mt-2 p-2">
-    <input class="form-control" type="text" name="userName"
-    formControlName="userName" placeholder="Enter Name"
-  >
-  </div>
-  <!-- err messg for username -->
-  <small class="text-danger" *ngIf="!sfc.userName.touched && !sfc.userName.valid">*Name Required</small>
-<!-- Email -->
-  <div class="form-group mt-2 p-2">
-    <input class="form-control" type="email" name="usereMail" formControlName="userEmail" placeholder="Enter Email" >
-  </div>
-<!-- err msg Useremail -->
-<small class="text-danger" *ngIf="!sfc.userDob.touched && !sfc.userEmail.valid">*Enter Valid Email</small>
-<!-- DOB -->
-  <div class="form-group mt-2 p-2">
-    <input class="form-control" type="date" name="userDob" formControlName="userDob" >
-  </div>
-  <!-- err msg for dob -->
-  <small class="text-danger" *ngIf="!sfc.userDob.touched && !sfc.userDob.valid">*DOB Required</small>
-<!-- Gender-> Male -->
-  <div class="custom-control custom-radio mt-2 p-2">
-    <input id="male" type="radio" class="custom-control-input" value="male" name="userGender" formControlName="userGender" >
-    <label class="custom-control-label" for="male">Male</label>
-  </div>
-<!-- gender -> Female -->
-  <div class="custom-control custom-radio mt-2 p-2">
-    <input id="female" type="radio" class="custom-control-input" value="female" name="userGender" formControlName="userGender" >
-    <label class="custom-control-label" for="female">Female</label>
-  </div>
-  <!-- err msg for Gender -->
-  <small class="text-danger" *ngIf="!sfc.userGender.touched && !sfc.userGender.valid ">* Required</small>
-<br >
-  <button class="btn btn-primary mt-3 p-2" (click)="onsubmit()"
-          [disabled]="!sfc.userName.valid && !sfc.userEmail.valid && !sfc.userDob.valid && !sfc.userGender.valid"
-          >Submit</button>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="simpleForm " >
+        <!-- UserName -->
+        <div class="form-group mt-2 p-2">
+          <input class="form-control" type="text" name="userName"
+          formControlName="userName" placeholder="Enter Name"
+          [ngClass]="{'is-invalid': formSubmit && sfc['userName'].errors}"
+        >
+         <!-- err messg for username -->
+        <div class="text-danger" *ngIf=" formSubmit && sfc['userName'].errors">
+          * Name required
+        </div>
+        </div>
 
-</form>
+
+      <!-- Email -->
+        <div class="form-group mt-2 p-2">
+          <input class="form-control" type="email" name="usereMail" formControlName="userEmail" placeholder="Enter Email"
+          [ngClass]="{'is-invalid': formSubmit && sfc['userEmail'].errors}"
+          >
+          <div class="text-danger" *ngIf=" formSubmit && sfc['userEmail'].errors">
+            * Email required
+          </div>
+
+        </div>
+      <!-- err msg Useremail -->
+      <!-- <small class="text-danger" *ngIf="!sfc.userDob.touched && !sfc.userEmail.valid">*Enter Valid Email</small> -->
+      <!-- DOB -->
+        <div class="form-group mt-2 p-2">
+          <input class="form-control" type="date" name="userDob" formControlName="userDob"
+          [ngClass]="{'is-invalid': formSubmit && sfc['userDob'].errors}"
+          >
+          <div class="text-danger" *ngIf=" formSubmit && sfc['userDob'].errors">
+            * DOB required
+          </div>
+        </div>
+        <!-- err msg for dob -->
+        <!-- <small class="text-danger" *ngIf="!sfc.userDob.touched && !sfc.userDob.valid">*DOB Required</small> -->
+      <!-- Gender-> Male -->
+        <div class="custom-control custom-radio mt-2 p-2">
+          <input id="male" type="radio" class="custom-control-input" value="male" name="userGender" formControlName="userGender"
+          [ngClass]="{'is-invalid': formSubmit && sfc['userGender'].errors}"
+          >
+          <label class="custom-control-label" for="male">Male</label>
+        </div>
+      <!-- gender -> Female -->
+        <div class="custom-control custom-radio mt-2 p-2">
+          <input id="female" type="radio" class="custom-control-input" value="female" name="userGender" formControlName="userGender"
+          [ngClass]="{'is-invalid': formSubmit && sfc['userGender'].errors}"
+          >
+          <label class="custom-control-label" for="female">Female</label>
+        </div>
+        <div class="text-danger" *ngIf=" formSubmit && sfc['userGender'].errors">
+          * Choose Either one
+        </div>
+        <!-- err msg for Gender -->
+        <!-- <small class="text-danger" *ngIf="!sfc.userGender.touched && !sfc.userGender.valid ">* Required</small> -->
+      <br >
+        <button class="btn btn-primary mt-3 p-2" (click)="onsubmit()"
+        [disabled]=""
+        >Submit</button>
+
+      </form>
+    </div>
+  </div>
+
 </div>
 
 <table class="table table-striped">

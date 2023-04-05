@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 
 
@@ -11,13 +11,8 @@ import { RxwebValidators } from '@rxweb/reactive-form-validators';
 export class AppComponent implements OnInit{
   title = 'formdesign';
   index = 0
-// Form Group
-  simpleForm = this.fb.group({
-    userName: ['', RxwebValidators.required()],
-    userEmail: ['', [RxwebValidators.required(), RxwebValidators.email()]],
-    userDob: ['', RxwebValidators.required()],
-    userGender: ['', RxwebValidators.required()]
-  });
+  // Form Group
+  simpleForm!: FormGroup
 
   formSubmit = false;
 
@@ -26,6 +21,12 @@ export class AppComponent implements OnInit{
   constructor(private fb: FormBuilder){}
 
   ngOnInit(): void {
+    this.simpleForm = this.fb.group({
+      userName: ['', RxwebValidators.required()],
+      userEmail: ['', [RxwebValidators.required(), RxwebValidators.email()]],
+      userDob: ['', RxwebValidators.required()],
+      userGender: ['', RxwebValidators.required()]
+    });
 
   }
   get sfc() {
@@ -39,16 +40,14 @@ export class AppComponent implements OnInit{
   }
 
 submitRequest(){
+  this.formSubmit = true;
   if(this.simpleForm.valid){
-    this.formSubmit = true;
-    console.log(this.simpleForm.valid)
     return;
   }
 }
 onsubmit(){
     this.submitRequest();
     if(this.sfvalid){
-      // console.log(this.sfv);
       this.formData.push(this.sfv);
       this.simpleForm.reset();
     }
