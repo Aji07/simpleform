@@ -1,8 +1,9 @@
-<!-- form -->
+
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h1>Simple Form</h1>
+      <!-- form -->
       <form [formGroup]="simpleForm " >
         <!-- UserName -->
         <div class="form-group mt-2 p-2">
@@ -65,35 +66,30 @@
 
       </form>
         <!-- Table -->
-  <div class="container">
-    <div class="row-md-6">
+      <br >
       <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">UserName`</th>
-            <th scope="col">UserEmail</th>
-            <th scope="col">DOB</th>
-            <th scope="col">Gender</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="text-blue" *ngFor="let fd of formData;" >
-            <!-- <th scope="col">{{i + 1}}</th> -->
-            <td scope="row">{{fd.id}}</td>
-            <td scope="row">{{fd.userName}}</td>
-            <td scope="row">{{fd.userEmail}}</td>
-            <td scope="row">{{fd.userDob}}</td>
-            <td scope="row">{{fd.userGender}}</td>
-          </tr>
-        </tbody>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">UserName`</th>
+              <th scope="col">UserEmail</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-blue" *ngFor="let fd of formData;" >
+              <!-- <th scope="col">{{i + 1}}</th> -->
+              <td scope="row">{{fd.id}}</td>
+              <td scope="row">{{fd.userName}}</td>
+              <td scope="row">{{fd.userEmail}}</td>
+              <td scope="row">{{fd.userDob}}</td>
+              <td scope="row">{{fd.userGender}}</td>
+            </tr>
+          </tbody>
       </table>
-    </div>
-    </div>
-    </div>
+     </div>
   </div>
-
-
 </div>
 
 <!-- Apicall Components  -->

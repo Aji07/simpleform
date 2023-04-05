@@ -14,13 +14,22 @@ export class ApicallsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMethod();
+    this.postMethod();
   }
 
   public getMethod(){
-     this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe((data) => {
+     this.http.get('https://jsonplaceholder.typicode.com/todos/').subscribe((data) => {
       this.getJsonValue = data;
      });
 
     }
 
+  public postMethod(){
+   let body = {
+      userId: 3,
+      title: 'Hello',
+      completed: true
+    }
+    this.http.post('https://jsonplaceholder.typicode.com/posts', body).subscribe((data) => {this.postJsonValue = data});
+  }
 }

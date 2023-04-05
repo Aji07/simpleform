@@ -1,2 +1,36 @@
-<h2>apicalls works!</h2>
-{{getJsonValue | json}}
+<hr >
+<div class="container">
+  <div class="row">
+    <!-- Get Data API -->
+    <div class="col-6">
+      <h2>getData using API</h2>
+      <br >
+      <div class="col-md-6">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">TITLE</th>
+              <th scope="col">complted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let val of getJsonValue">
+              <td>{{val.id}}</td>
+              <td>{{val.title}}</td>
+              <td>{{val.completed}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- Post Data API -->
+    <div class="col-6">
+      <h2>Post Data API</h2>
+      {{postJsonValue | json}}
+    </div>
+  </div>
+
+</div>
