@@ -50,9 +50,10 @@ onsubmit(){
     if(this.sfvalid){
       this.formData.push(this.sfv);
       this.simpleForm.reset();
-    }
+      }
     else{console.log("Form Is invalid", this.sfc)}
     console.log(this.formData)
+    
 
   }
 
